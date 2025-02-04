@@ -1,8 +1,16 @@
 const fs = require('fs');
 
-// Lê o arquivo JSON
-const rawData = fs.readFileSync('3-faturamento/faturamento.json', 'utf8');
-const { faturamentoDiario } = JSON.parse(rawData);
+// Função para ler o arquivo JSON
+function lerDadosJson(caminho) {
+    const rawData = fs.readFileSync(caminho, 'utf8');
+    return JSON.parse(rawData);
+}
+
+// Lê os dados do arquivo JSON
+const dadosJson = lerDadosJson('./3-faturamento/dados.json');
+
+// Extrai os valores de faturamento diário
+const faturamentoDiario = dadosJson.map(item => item.valor);
 
 function calcularFaturamento(faturamento) {
     const diasComFaturamento = faturamento.filter(val => val > 0);
