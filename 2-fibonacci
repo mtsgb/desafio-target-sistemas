@@ -1,0 +1,25 @@
+// 2)
+function isFibonacci(num) {
+    if (num < 0) return false;
+    if (num === 0 || num === 1) return true;
+
+    let a = 0;
+    let b = 1;
+    let c = a + b;
+
+    while (c <= num) {
+        if (c === num) return true;
+        a = b;
+        b = c;
+        c = a + b;
+    }
+
+    return false;
+}
+
+const numero1 = 21; // Defina o número a ser verificado aqui
+if (isFibonacci(numero)) {
+    console.log(`${numero} pertence à sequência de Fibonacci.`);
+} else {
+    console.log(`${numero} não pertence à sequência de Fibonacci.`);
+}
